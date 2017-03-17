@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const db = new Sequelize('postgres://localhost:5432/tripplanner');
 
-//testing connection:
+//testing connection:  //got this from sequelize getting started
 db
   .authenticate()
   .then(function(err) {

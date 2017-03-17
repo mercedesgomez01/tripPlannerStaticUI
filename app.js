@@ -3,15 +3,23 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var routes = require('./routes');
-var models = require('./models/index') //comes with Place and Hotel models that we have yet to set up.
+var models = require('./models/index') ;//comes with Place and Hotel models that we have yet to set up.
+var nunjucks = require('nunjucks');
 
 var app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
+var env = nunjucks.configure('views', { noCache: true }); //don't need lines 10-15 for the test
+app.engine('html', nunjucks.render);
+app.set('view engine', 'html');
+
 app.use(morgan('dev'))
+
+//setting the static path up, serving up static files in public
+//app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(__dirname + '/public'));
 
 app.use('/', routes);
 
@@ -30,7 +38,11 @@ app.get('/place', bodyParser.json(), function (req, res) {
     city: 'NYC'
   };
   res.json(placeMadeUp);
-})
+});
+
+app.get('/public', function(req, res, next){
+  res.render('index');
+});
 
 //error handling
 app.use(function(req, res, next) {
