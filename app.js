@@ -3,6 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var routes = require('./routes');
+var models = require('./models/index')
 
 var app = express();
 
