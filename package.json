@@ -1,0 +1,16 @@
+{
+  "name": "tripplannerstatic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "nyc",
+    "js",
+    "express"
+  ],
+  "author": "Tina Heiligers",
+  "license": "ISC"
+}
