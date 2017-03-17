@@ -15,7 +15,13 @@ app.use(morgan('dev'))
 
 app.use('/', routes);
 
+//logging server requests to the console with a send to the browser.
+app.get('/', function(req, res) {
+  var message = 'Lets get exploring';
+  res.send(message);
+});
 
+//error handling
 app.use(function(req, res, next) {
   var err = new Error('Oops, Your Page Was Not Found');
   err.status = 404;
