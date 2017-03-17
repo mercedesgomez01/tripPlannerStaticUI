@@ -1,33 +1,41 @@
 //define schema for db table
 //will need a db to connect to
 const Sequelize = require('sequelize');
-const db = new Sequelize('postgres://localhost:5432/tripplanner');
+var db = require('./index');
 
-//testing connection:
-db
-  .authenticate()
-  .then(function(err) {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(function (err) {
-    console.log('Unable to connect to the database:', err);
-  });
+//testing connection:should not need this again
+// db
+//   .authenticate()
+//   .then(function(err) {
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(function (err) {
+//     console.log('Unable to connect to the database:', err);
+//   });
 
 //this is where we create our tables in our db
 
 //create an object with the schema we want
-var bed = {
-  //sleep here!
-}
+var hotel = {
+
+  name:  {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+
+  num_start: {
+    type: Sequelize.FLOAT,
+    allowNull: false
+  },
+// amenities (string of comma delimited items)
+// not sure about how to define this model
+  amenities: {
+    type: Sequelize.STRING,
+    }
+};
 
 //create the model name by defining the object we've just created as a sequelize Table.
-var Hotel = db.define('Hotel', bed);
+var Hotel = db.define('Hotel', hotel);
 
-Hotel.sync({force: true}).then(function () {
-  // Table created
-  return Hotel.create({
-    //fields
-  });
-});
 
 module.exports = Hotel;
