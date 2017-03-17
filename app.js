@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var routes = require('./routes');
 
 var app = express();
 
@@ -10,6 +11,9 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.use(morgan('dev'))
+
+app.use('/', routes);
+
 
 app.use(function(req, res, next) {
   var err = new Error('Oops, Your Page Was Not Found');
