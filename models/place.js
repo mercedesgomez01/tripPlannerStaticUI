@@ -36,7 +36,7 @@ var place = {
 
 //create the model name by defining the object we've just created as a sequelize Table.
 console.log(db);
-var Place = db.define('Place', place);
+var Place = db.define('place', place);
 
 // //testing db connection:
 // //

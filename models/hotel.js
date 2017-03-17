@@ -31,11 +31,12 @@ var hotel = {
 // not sure about how to define this model
   amenities: {
     type: Sequelize.STRING,
+    allowNull: true
     }
 };
 
 //create the model name by defining the object we've just created as a sequelize Table.
-var Hotel = db.define('Hotel', hotel);
+var Hotel = db.define('hotel', hotel);
 
 
 module.exports = Hotel;
