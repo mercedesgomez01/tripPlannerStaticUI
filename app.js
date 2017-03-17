@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var routes = require('./routes');
-var models = require('./models/index')
+var models = require('./models/index') //comes with Place and Hotel models that we have yet to set up.
 
 var app = express();
 
