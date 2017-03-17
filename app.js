@@ -16,10 +16,21 @@ app.use(morgan('dev'))
 app.use('/', routes);
 
 //logging server requests to the console with a send to the browser.
+//////this I got from looking it up in the morgan docs
 app.get('/', function(req, res) {
   var message = 'Lets get exploring';
   res.send(message);
 });
+
+//checking that the server can parse json bodies:
+////this I got from looking it up in the body parser docs
+app.get('/place', bodyParser.json(), function (req, res) {
+  var placeMadeUp = {
+    name: 'Times Square',
+    city: 'NYC'
+  };
+  res.json(placeMadeUp);
+})
 
 //error handling
 app.use(function(req, res, next) {
