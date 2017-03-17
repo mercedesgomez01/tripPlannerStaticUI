@@ -11,9 +11,18 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev'))
 
+app.use(function(req, res, next) {
+  var err = new Error('Oops, Your Page Was Not Found');
+  err.status = 404;
+  next(err);
+})
+
 app.use(function(err, req, res, next) {
-  console.error(err)
-  res.status(500)
+  res.status(err.status || 500);
+  console.error(err);
+  res.render(
+             //render out the error html page
+     )
   res.send(err, err.stack)
 })
 
